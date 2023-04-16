@@ -3,13 +3,14 @@ FROM nvidia/cuda:11.6.0-cudnn8-devel-ubuntu20.04
 ENV TZ=Asia/Seoul
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && \
-    apt-get install -y software-properties-common tzdata
+RUN apt-get update && apt-get install -y \
+        software-properties-common tzdata
 RUN add-apt-repository ppa:deadsnakes/ppa
-RUN apt-get update -y \
-    && apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev \
-    libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev \
-    liblzma-dev python-openssl git vim less python3-venv
+RUN apt-get update -y && apt-get install -y \
+        make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev \
+        libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev \
+        liblzma-dev python-openssl git vim less python3-venv
+RUN apt install locales && locale-gen en_US.UTF-8 && dpkg-reconfigure locales
 
 ENV HOME /root
 ENV PYENV_ROOT $HOME/.pyenv
@@ -28,10 +29,11 @@ RUN $(pyenv which python3.9) -m pip install -U poetry
 RUN $(pyenv which python3.9) -m poetry config virtualenvs.in-project true
 RUN pyenv global system
 
-RUN apt install locales && locale-gen en_US.UTF-8 && dpkg-reconfigure locales
 
 ### in host terminal
+### run this command where the dockerfile is to build a docker image
 # docker build -t jeonghyeon:1.0.0 .
+### run this command inside your workspace to launch a container
 # docker run -itd --gpus=all --volume=$(pwd):/workspace --name=jeonghyeon jeonghyeon:1.0.0
 
 ### in vsc command pallet
