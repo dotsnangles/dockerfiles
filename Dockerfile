@@ -34,7 +34,7 @@ RUN pyenv global system
 ### run this command where the dockerfile is to build a docker image
 # docker build -t jeonghyeon:1.0.0 .
 ### run this command inside your workspace to launch a container
-# docker run -itd --gpus=all --volume=$(pwd):/workspace --name=jeonghyeon jeonghyeon:1.0.0
+# docker run -itd --gpus=all --volume=$(pwd):/workspace --shm-size=16gb --name=jeonghyeon jeonghyeon:1.0.0
 
 ### in vsc command pallet
 # Dev Containers: Attach to Running Container
