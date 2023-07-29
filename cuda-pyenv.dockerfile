@@ -38,5 +38,8 @@ RUN curl https://pyenv.run | bash && \
 ### in vsc command palette
 # Dev Containers: Attach to Running Container
 
-### some useful commands
+### useful commands
+# unminimize
+# apt install man-db
+# git config --global core.filemode false
 # poetry config virtualenvs.in-project true
