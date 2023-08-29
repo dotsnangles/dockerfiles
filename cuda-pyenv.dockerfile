@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.7.1-cudnn8-devel-ubuntu22.04
+FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04
 
 ENV LC_ALL=C.utf8
 ENV TZ=Asia/Seoul
@@ -21,7 +21,7 @@ RUN curl https://pyenv.run | bash && \
     echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 
 
-### docker build -t cuda-pyenv:11.7.1-cudnn8-devel-ubuntu22.04 .
+### docker build -t cuda-pyenv:11.8.0-cudnn8-devel-ubuntu22.04 .
 
 ### run this command inside your workspace to launch a container
 # docker run \
@@ -33,7 +33,7 @@ RUN curl https://pyenv.run | bash && \
 # --volume=$(pwd):/workspace \
 # --volume=/var/run/docker.sock:/var/run/docker.sock \
 # --volume=$(which docker):/usr/bin/docker \
-# cuda-pyenv:11.7.1-cudnn8-devel-ubuntu22.04
+# cuda-pyenv:11.8.0-cudnn8-devel-ubuntu22.04
 
 ### in vsc command palette
 # Dev Containers: Attach to Running Container
